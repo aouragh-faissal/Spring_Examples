@@ -30,7 +30,8 @@ public class SpringSecurityConfig {
 		}).headers(headers -> headers.frameOptions((frame) -> frame.sameOrigin()))
 				.csrf((csrf) -> csrf.ignoringRequestMatchers(
 				AntPathRequestMatcher.antMatcher("/h2/**")))
-	.formLogin(Customizer.withDefaults()).build();
+	.formLogin(Customizer.withDefaults())
+	.oauth2Login(Customizer.withDefaults()).build();
 	}
 	
 //	@Bean
