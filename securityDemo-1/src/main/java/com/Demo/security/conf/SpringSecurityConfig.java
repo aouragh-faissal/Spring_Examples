@@ -27,7 +27,7 @@ public class SpringSecurityConfig {
 	        auth.requestMatchers(AntPathRequestMatcher.antMatcher("/h2/**")).hasRole("ADMIN");	
 			auth.requestMatchers("/user").hasAnyRole("ADMIN", "USER");
 			auth.anyRequest().authenticated();
-		}).headers(headers -> headers.frameOptions().disable())
+		}).headers(headers -> headers.frameOptions((frame) -> frame.sameOrigin()))
 				.csrf((csrf) -> csrf.ignoringRequestMatchers(
 				AntPathRequestMatcher.antMatcher("/h2/**")))
 	.formLogin(Customizer.withDefaults()).build();
